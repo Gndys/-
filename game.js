@@ -209,21 +209,77 @@ function drawGrid() {
 function drawFood() {
   const centerX = food.x * gridSize + gridSize / 2;
   const centerY = food.y * gridSize + gridSize / 2;
-  const pulse = Math.sin(foodPulse * 0.42) * 1.8;
-  const radius = 5.8 + pulse;
+  const pulse = Math.sin(foodPulse * 0.42) * 0.7;
+  const appleSize = 13 + pulse;
+  const topY = centerY - appleSize * 0.38;
+  const bottomY = centerY + appleSize * 0.43;
 
   ctx.save();
-  ctx.shadowColor = "#ff4fd8";
-  ctx.shadowBlur = 18;
-  ctx.fillStyle = "#ff4fd8";
+  ctx.shadowColor = "#ff4b4b";
+  ctx.shadowBlur = 16;
+  ctx.fillStyle = "#e9313f";
   ctx.beginPath();
-  ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+  ctx.moveTo(centerX, topY + 2);
+  ctx.bezierCurveTo(
+    centerX - appleSize * 0.48,
+    topY - 2,
+    centerX - appleSize * 0.66,
+    centerY + appleSize * 0.08,
+    centerX - appleSize * 0.5,
+    centerY + appleSize * 0.36,
+  );
+  ctx.bezierCurveTo(
+    centerX - appleSize * 0.34,
+    bottomY,
+    centerX - appleSize * 0.08,
+    bottomY + 1,
+    centerX,
+    bottomY - 1,
+  );
+  ctx.bezierCurveTo(
+    centerX + appleSize * 0.08,
+    bottomY + 1,
+    centerX + appleSize * 0.34,
+    bottomY,
+    centerX + appleSize * 0.5,
+    centerY + appleSize * 0.36,
+  );
+  ctx.bezierCurveTo(
+    centerX + appleSize * 0.66,
+    centerY + appleSize * 0.08,
+    centerX + appleSize * 0.48,
+    topY - 2,
+    centerX,
+    topY + 2,
+  );
   ctx.fill();
 
   ctx.shadowBlur = 0;
-  ctx.fillStyle = "#ffd166";
+  ctx.fillStyle = "#ff6d63";
   ctx.beginPath();
-  ctx.arc(centerX - 1.5, centerY - 1.5, 2.4, 0, Math.PI * 2);
+  ctx.ellipse(
+    centerX - appleSize * 0.22,
+    centerY - appleSize * 0.08,
+    appleSize * 0.16,
+    appleSize * 0.22,
+    0.7,
+    0,
+    Math.PI * 2,
+  );
+  ctx.fill();
+
+  ctx.fillStyle = "#5d3b20";
+  ctx.fillRect(centerX - 1.1, topY - 5, 2.2, 7);
+
+  ctx.fillStyle = "#78d94b";
+  ctx.beginPath();
+  ctx.ellipse(centerX + 4, topY - 3, 4.2, 2.4, -0.45, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = "#7a101c";
+  ctx.beginPath();
+  ctx.arc(centerX, topY + 2, 2.2, 0, Math.PI * 2);
   ctx.fill();
   ctx.restore();
 }
