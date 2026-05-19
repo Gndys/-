@@ -11,13 +11,16 @@
       <section class="game-panel" aria-label="贪吃蛇游戏">
         <div class="topbar">
           <div class="title-block">
-            <span class="eyebrow">Arcade Classic</span>
-            <h1>贪吃蛇</h1>
+            <span class="eyebrow">Arcade Remix</span>
+            <h1>霓虹贪吃蛇</h1>
             <p id="status">按方向键或 WASD 开始</p>
           </div>
           <div class="scoreboard" aria-label="分数">
             <span>分数 <strong id="score">0</strong></span>
             <span>最高 <strong id="best">0</strong></span>
+            <span>等级 <strong id="level">1</strong></span>
+            <span>连击 <strong id="combo">x1</strong></span>
+            <span>护盾 <strong id="shield">0</strong></span>
           </div>
         </div>
 
@@ -32,6 +35,13 @@
         <div class="controls">
           <button id="pauseButton" type="button">暂停</button>
           <button id="restartButton" type="button">重新开始</button>
+        </div>
+
+        <div class="legend" aria-label="道具说明">
+          <span><i class="dot dot-food"></i>食物</span>
+          <span><i class="dot dot-bonus"></i>奖励</span>
+          <span><i class="dot dot-slow"></i>减速</span>
+          <span><i class="dot dot-shield"></i>护盾</span>
         </div>
 
         <div class="mobile-pad" aria-label="移动端方向键">
